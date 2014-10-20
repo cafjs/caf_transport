@@ -1,0 +1,21 @@
+{
+    "name": "caf_transport",
+    "description": "Cloud Assistant Framework transport helper methods.",
+    "version": "0.2.0",
+    "author": "Antonio Lain <antlai@cafjs.com>",
+    "dependencies": {
+    },
+    "devDependencies": {
+        "nodeunit" : ">=0.9"
+    },
+    "main": "lib/json_rpc",
+    "homepage": "http://www.cafjs.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cafjs/caf_transport.git"
+    },
+    "scripts": {
+        "test": "node ./node_modules/.bin/nodeunit"
+    },
+    "engines": { "node": ">= 0.10.1 " }
+}
