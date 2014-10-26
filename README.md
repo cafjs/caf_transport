@@ -8,12 +8,11 @@ See http://www.cafjs.com
 
 [![Build Status](http://ci.cafjs.com/github.com/cafjs/caf_transport/status.svg?branch=master)](http://ci.cafjs.com/github.com/cafjs/caf_transport)
 
-
 This library provides helper methods to manipulate requests/responses to CAs. 
 
 This is mostly used by implementors of client libraries or the CAF core. 
 
-A separate library with no other dependencies makes it easier to use on both browser and backend. 
+A separate library with no dependencies makes it easier to use on both a browser and the backend. 
 
 ## API
 
