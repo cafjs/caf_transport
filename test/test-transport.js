@@ -90,6 +90,7 @@ module.exports = {
         var reqCrash = json_rpc.request(TOKEN, TO, FROM, SESSION_ID, 'crash',
                                         ARGS[0], ARGS[1]);
         json_rpc.call(reqCrash, hello, function(err) {
+                          err = json_rpc.reply(err);
                           test.equal(json_rpc.getSystemErrorMsg(err),
                                      'Invalid params', 'not crashed');
                           test.equal(json_rpc.getSystemErrorCode(err),
@@ -112,6 +113,7 @@ module.exports = {
         var reqNotThere = json_rpc.request(TOKEN, TO, FROM, SESSION_ID, 'ccc',
                                            ARGS[0], ARGS[1]);
         json_rpc.call(reqNotThere, hello, function(err) {
+                          err = json_rpc.reply(err);
                           test.equal(json_rpc.getSystemErrorMsg(err),
                                      'method not found', 'not there');
                           test.equal(json_rpc.getSystemErrorCode(err),
@@ -129,10 +131,10 @@ module.exports = {
 
     },
     reply: function(test) {
-        test.expect(55);
+        test.expect(56);
         var req = json_rpc.request(TOKEN, TO, FROM, SESSION_ID, METHOD_NAME,
                                    ARGS[0], ARGS[1]);
-        var replyOK = json_rpc.reply(req, null, 'foo');
+        var replyOK = json_rpc.reply(null, req, 'foo');
         var checkReply = function(reply, sysError) {
             if (sysError) {
                 test.ok(!json_rpc.isAppReply(reply), 'not an app reply');
@@ -157,15 +159,17 @@ module.exports = {
 
         checkReply(replyOK);
 
-        var replyBad = json_rpc.reply(req, new Error('foo'));
+        var replyBad = json_rpc
+            .reply(json_rpc.newAppError(req, 'foo', new Error('foo')), req);
         checkReply(replyBad);
         test.equal(json_rpc.getAppReplyData(replyBad), null, 'bad data reply');
         test.equal(json_rpc.getAppReplyError(replyBad).message, 'foo',
                    'bad err reply');
 
-        var sysError =  json_rpc.systemError(req,
-                                             json_rpc.ERROR_CODES.parseError,
-                                             'foo');
+        var sysError =   json_rpc
+            .reply(json_rpc.newSysError(req,
+                                        json_rpc.ERROR_CODES.parseError,
+                                        'foo'));
         checkReply(sysError, true);
         test.equal(json_rpc.getSystemErrorCode(sysError),
                    json_rpc.ERROR_CODES.parseError);
@@ -174,8 +178,16 @@ module.exports = {
         test.ok(!json_rpc.isErrorRecoverable(sysError));
         test.equal(typeof json_rpc.getSystemErrorData(sysError).stack,
                    'string');
-        test.deepEqual(json_rpc.reply(req, sysError, 'not used'), sysError);
-
+        // stack is different
+        test.notDeepEqual(json_rpc
+                          .reply(json_rpc.newSysError(req,
+                                                      json_rpc.ERROR_CODES
+                                                      .parseError,
+                                                      'foo')), sysError);
+        test.doesNotThrow(function() {
+                              var p = JSON.stringify(sysError);
+                              console.log(p);
+                          });
         var redirError = json_rpc.redirect(req, 'foo');
         test.ok(json_rpc.isRedirect(redirError));
         test.ok(json_rpc.isSystemError(redirError));
