@@ -92,9 +92,9 @@ module.exports = {
         json_rpc.call(reqCrash, hello, function(err) {
                           err = json_rpc.reply(err);
                           test.equal(json_rpc.getSystemErrorMsg(err),
-                                     'Invalid params', 'not crashed');
+                                     'Exception in application code', 'not crashed');
                           test.equal(json_rpc.getSystemErrorCode(err),
-                                     json_rpc.ERROR_CODES.invalidParams,
+                                     json_rpc.ERROR_CODES.exceptionThrown,
                                      'crashed: bad errn');
                           var errData = json_rpc.getSystemErrorData(err);
                           test.equal(typeof errData.stack, 'string',
