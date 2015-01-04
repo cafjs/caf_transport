@@ -1,7 +1,5 @@
 var json_rpc = require('../lib/json_rpc');
 
-
-
 var TO = 'xx';
 var OTHER_TO = 'other-xx';
 var FROM = 'yy';
