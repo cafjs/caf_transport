@@ -1,7 +1,7 @@
 {
     "name": "caf_transport",
     "description": "Cloud Assistant Framework transport helper methods.",
-    "version": "0.2.10",
+    "version": "0.2.11",
     "author": "Antonio Lain <antlai@cafjs.com>",
     "dependencies": {
     },
