@@ -1,13 +1,12 @@
 {
     "name": "caf_transport",
     "description": "Cloud Assistant Framework transport helper methods.",
-    "version": "0.2.27",
+    "version": "0.3.0",
     "author": "Antonio Lain <antlai@cafjs.com>",
-    "dependencies": {
-    },
+    "dependencies": {},
     "devDependencies": {
         "eslint": "^3.1.1",
-        "nodeunit" : ">=0.9",
+        "nodeunit": ">=0.9",
         "jsdoc": "^3.4.2"
     },
     "main": "index",
@@ -18,8 +17,11 @@
     },
     "scripts": {
         "test": "node ./node_modules/.bin/nodeunit",
-        "eslint" : "./node_modules/.bin/eslint .",
-        "eslintfix" : "./node_modules/.bin/eslint --fix .",
-        "docs" : "rm -fr docs; mkdir -p docs; ./node_modules/.bin/jsdoc --pedantic -c ./conf.json -d docs lib/*.js --readme ./README.md --package ./package.json"    },
-    "engines": { "node": ">= 0.10.1 " }
+        "eslint": "./node_modules/.bin/eslint .",
+        "eslintfix": "./node_modules/.bin/eslint --fix .",
+        "docs": "rm -fr docs; mkdir -p docs; ./node_modules/.bin/jsdoc --pedantic -c ./conf.json -d docs lib/*.js --readme ./README.md --package ./package.json"
+    },
+    "engines": {
+        "node": ">= 0.10.1 "
+    }
 }
