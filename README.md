@@ -1,10 +1,11 @@
-# CAF.js (Cloud Assistant Framework)
+# Caf.js
 
 Co-design permanent, active, stateful, reliable cloud proxies with your web app and gadgets.
 
-See http://www.cafjs.com
+See https://www.cafjs.com
 
-## CAF Transport
+## Transport
+
 [![Build Status](https://travis-ci.org/cafjs/caf_transport.svg?branch=master)](https://travis-ci.org/cafjs/caf_transport)
 
 This library provides helper methods to manipulate requests/responses to/from CAs.
