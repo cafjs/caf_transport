@@ -6,7 +6,7 @@ The  copyright of the original `CAF` project is assigned to `Hewlett-Packard Dev
 
 ## 0.4.1
  - Mark exceptions with the `wasThrown` flag as system errors.
-
+ - Add length constant for accounts CA names
 
 ## 0.4.0
  - Add new copyright to simplify third-party contributions
