@@ -5,8 +5,8 @@ Co-design cloud assistants with your web app and IoT devices.
 See https://www.cafjs.com
 
 ## Transport
+[![Build Status](https://github.com/cafjs/caf_transport/actions/workflows/push.yml/badge.svg)](https://github.com/cafjs/caf_transport/actions/workflows/push.yml)
 
-[![Build Status](https://travis-ci.org/cafjs/caf_transport.svg?branch=master)](https://travis-ci.org/cafjs/caf_transport)
 
 This library provides helper methods to manipulate requests/responses to/from CAs.
 
